@@ -18,7 +18,7 @@ Let the IKEv2 vpn service run in the Docker container, do not need too much conf
 ## Usage examples
 1. Clone git
 ```Bash
-# git clone https://github.com/aliasmee/alpine-ikev2-vpn.git
+# git clone https://github.com/ktenman/alpine-ikev2-vpn.git
 ```
 Or use `docker pull` to download images to the local
 ```Bash
