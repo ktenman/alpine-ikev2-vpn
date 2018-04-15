@@ -18,24 +18,23 @@ Let the IKEv2 vpn service run in the Docker container, do not need too much conf
 ## Usage examples
 1. Clone git
 ```Bash
-# git clone https://github.com/ktenman/alpine-ikev2-vpn.git
+git clone https://github.com/ktenman/alpine-ikev2-vpn.git
 ```
 Or use `docker pull` to download images to the local
 ```Bash
-# docker pull hanyifeng/alpine-ikev2-vpn
+docker pull hanyifeng/alpine-ikev2-vpn
 ```
 Then run `docker run` command.
 
 
 2. Using docker build can create an automated build image,Then use the following command to run
 ```Bash
-# cd alpine-ikev2-vpn/
-# docker build -t ikev2 .
+cd alpine-ikev2-vpn/ && docker build -t ikev2 .
 ```
 
 * eap-mschapv2 mode
 ```bash
-# docker run -itd --privileged -v /lib/modules:/lib/modules -e HOST_IP='Your's Public network IP' -e VPNUSER=jack -e VPNPASS="jack&opsAdmin" -p 500:500/udp -p 4500:4500/udp --name=ikev2-vpn ikev2
+docker run -itd --privileged -v /lib/modules:/lib/modules -e HOST_IP='8.9.8.48' -e VPNUSER=i -e VPNPASS="k" -p 500:500/udp -p 4500:4500/udp --name=ikev2-vpn ikev2
 ```
     **HOST_IP :Public network must be your host IP**
     **[$VPNUSER] & [$VPNPASS] env Optional,The function is to customize the user name and password to connect to the VPN service.**
@@ -43,7 +42,7 @@ Then run `docker run` command.
 
 * eap-radius mode
 ```bash
-# docker run -itd --privileged -v /lib/modules:/lib/modules -e HOST_IP='Your's Public network IP' -e ACCOUNTING='yes' -e RADIUS_PORT='1812' -e RADIUS_SERVER='Your's radius server IP' -e RADIUS_SECRET='xxxxxxx' -e EAP_TYPE='eap-radius' -p 500:500/udp -p 4500:4500/udp --name=ikev2-vpn ikev2
+docker run -itd --privileged -v /lib/modules:/lib/modules -e HOST_IP='Your's Public network IP' -e ACCOUNTING='yes' -e RADIUS_PORT='1812' -e RADIUS_SERVER='Your's radius server IP' -e RADIUS_SECRET='xxxxxxx' -e EAP_TYPE='eap-radius' -p 500:500/udp -p 4500:4500/udp --name=ikev2-vpn ikev2
 ```
     **ACCOUNTING: eap-radius mode Required.Value must be 'yes'
     **RADIUS_PORT: radius server running port. Required.
@@ -91,7 +90,7 @@ Create new VPN method is not described here ^_^.
 ## Other Tips
 1. If you want to add VPN users, you can run the following command to enter the container and edit the ipsec.secrets file.
 ```bash
-# docker exec -it ikev2-vpn bash
+docker exec -it ikev2-vpn bash
 bash-4.3# vi /usr/local/etc/ipsec.secrets
 ```
     **Pattern: testUserOne %any : EAP "testOnePass" **
