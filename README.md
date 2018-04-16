@@ -29,7 +29,7 @@ Then run `docker run` command.
 
 2. Using docker build can create an automated build image,Then use the following command to run
 ```Bash
-cd alpine-ikev2-vpn/ && docker build -t ikev2 .
+cd alpine-ikev2-vpn && install-docker.sh && docker build -t ikev2 .
 ```
 
 * eap-mschapv2 mode
